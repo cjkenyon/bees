@@ -1,5 +1,7 @@
 #include <windows.h>
 
+#include "log.h"
+
 LRESULT main_window_callback(HWND window, UINT message, WPARAM w_param,
                              LPARAM l_param) {
     LRESULT result = 0;
@@ -27,6 +29,9 @@ LRESULT main_window_callback(HWND window, UINT message, WPARAM w_param,
 
 int WINAPI WinMain(HINSTANCE instance, HINSTANCE prev_instance,
                    PSTR command_line, int nCmdShow) {
+
+    logger::Logger &logger = logger::Logger::instance();
+    logger.set_level(logger::Level::WARN);
 
     WNDCLASS window{};
 
